@@ -10,17 +10,24 @@ import About from './../js/scenes/About'
 import styles from './styles.js'
 
 export default class TabScreen extends React.Component {
-  renderIcon(title, iconName, isSelected) {
+  
+  renderIcon(iconName, isSelected) {
     let color = isSelected ? 'white' : '#999999';
     return (
-      <View style={styles.tabItemContainer}>
-        <Icon style={styles.icon} size={24} color={color} name={iconName} />
-        <Text style={[styles.tabTitleText, { color }]} numberOfLines={1}>
-          {title}
-        </Text>
-      </View>
+      <Icon style={styles.icon} size={24} color={color} name={iconName} />
     );
   }
+
+  renderTitle(title, isSelected) {
+    let color = isSelected ? 'white' : '#999999';
+    console.log(title)
+    return (
+      <Text style={[styles.tabTitleText, { color }]} numberOfLines={1}>
+        {title}
+      </Text>
+    );
+  }
+
 
   render() {
     return (
@@ -32,7 +39,9 @@ export default class TabScreen extends React.Component {
 
         <TabItem
           id="about"
-          renderIcon={(isSelected) => this.renderIcon('About', 'logo-twitch', isSelected)}>
+          title="About"
+          renderIcon={(isSelected) => this.renderIcon('logo-twitch', isSelected)}
+          renderTitle={(isSelected) => this.renderTitle('About', isSelected)} >
           <StackNavigation
 
             id="about"
@@ -42,7 +51,9 @@ export default class TabScreen extends React.Component {
         </TabItem>
         <TabItem
           id="schedule"
-          renderIcon={(isSelected) => this.renderIcon('Schedule', 'md-calculator', isSelected)}>
+          title="Schedule"
+          renderIcon={(isSelected) => this.renderIcon('md-calculator', isSelected)}
+          renderTitle={(isSelected) => this.renderTitle('Schedule', isSelected)} >
           <StackNavigation
             id="schedule"
             navigatorUID="schedule"
