@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux/native';
+import { Provider } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -10,6 +10,7 @@ import { NavigationContext, NavigationProvider, StackNavigation } from '@exponen
 import About from './scenes/About/'
 import Store from './redux/store'
 import Router from './../navigation/router'
+import TabScreen from './../navigation/NavigationLayout'
 
 
 
@@ -22,10 +23,12 @@ export default class R10 extends Component {
     })
     return (
       <Provider store={Store}>
-        <NavigationProvider router={Router}>
+        <NavigationProvider context={navigationContext}>
           <StatusBar barStyle='light-content' />
 
-          <StackNavigation initialRoute={Router.getRoute('about')} />
+          <StackNavigation
+            id='root'
+            initialRoute={Router.getRoute('tabscreen')} />
         </NavigationProvider>
       </Provider>
     );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View,
+  ScrollView,
   ActivityIndicator
 } from 'react-native';
 
