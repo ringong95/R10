@@ -3,6 +3,7 @@ import {
   TabNavigation,
   TabNavigationItem as TabItem,
 } from '@exponent/ex-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 import React, { Component } from 'react'
 import About from './../js/scenes/About'
 
@@ -13,11 +14,16 @@ export default class TabScreen extends React.Component {
         id="root"
         navigatorUID="root"
         initialTab="about">
+
         <TabItem
           id="about"
           title="About"
-        >
+          renderIcon={(isSelected) =>  <Icon name="logo-twitch"/> }>
+          
+          
+          
           <StackNavigation
+
             id="about"
             navigatorUID="about"
             initialRoute={Router.getRoute('about')}
