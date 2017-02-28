@@ -6,6 +6,11 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
+  "rnpm": {
+    "assets": [
+      "js/assets/fonts"
+    ]
+  },
   "dependencies": {
     "@exponent/ex-navigation": "^2.9.1",
     "babel-preset-react-native-stage-0": "^1.0.1",

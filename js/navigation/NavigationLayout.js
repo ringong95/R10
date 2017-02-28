@@ -6,21 +6,21 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import React, { Component } from 'react'
 import { View, Text } from 'react-native';
-import About from './../js/scenes/About'
-import styles from './styles.js'
+import About from '../scenes/About'
+import { styles } from './styles.js'
+import { colors } from '../config/styles'
 
 export default class TabScreen extends React.Component {
-  
+
+
   renderIcon(iconName, isSelected) {
-    let color = isSelected ? 'white' : '#999999';
+    let color = isSelected ? 'white' : colors.MediumGrey;
     return (
       <Icon style={styles.icon} size={24} color={color} name={iconName} />
     );
   }
-
   renderTitle(title, isSelected) {
-    let color = isSelected ? 'white' : '#999999';
-    console.log(title)
+    let color = isSelected ? 'white' : colors.MediumGrey;
     return (
       <Text style={[styles.tabTitleText, { color }]} numberOfLines={1}>
         {title}
@@ -30,6 +30,9 @@ export default class TabScreen extends React.Component {
 
 
   render() {
+    const defaultRouteConfig = {
+      
+    }
     return (
       <TabNavigation
         tabBarColor="black"
@@ -52,7 +55,7 @@ export default class TabScreen extends React.Component {
         <TabItem
           id="schedule"
           title="Schedule"
-          renderIcon={(isSelected) => this.renderIcon('md-calculator', isSelected)}
+          renderIcon={(isSelected) => this.renderIcon('ios-calendar', isSelected)}
           renderTitle={(isSelected) => this.renderTitle('Schedule', isSelected)} >
           <StackNavigation
             id="schedule"

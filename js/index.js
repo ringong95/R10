@@ -9,8 +9,8 @@ import {
 import { NavigationContext, NavigationProvider, StackNavigation } from '@exponent/ex-navigation';
 import About from './scenes/About/'
 import Store from './redux/store'
-import Router from './../navigation/router'
-import TabScreen from './../navigation/NavigationLayout'
+import Router from './navigation/router'
+import TabScreen from './navigation/NavigationLayout'
 
 
 

@@ -6,7 +6,7 @@ export const Conduct = ({title, description}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}> {title} </Text>
-      <Text> {description} </Text>
+      <Text style={styles.text}> {description} </Text>
     </View>
   )
 }

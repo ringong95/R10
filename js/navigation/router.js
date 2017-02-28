@@ -1,7 +1,8 @@
 import { createRouter } from '@exponent/ex-navigation';
-import About from './../js/scenes/About'
+
 import Tabscreen from './NavigationLayout';
-import Schedule from './../js/scenes/Schedule'
+import About from '../scenes/About'
+import Schedule from '../scenes/Schedule'
 
 export default Router = createRouter(() => ({
   about: () => About,
