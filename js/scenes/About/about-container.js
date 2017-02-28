@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -7,49 +8,45 @@ import {
 } from 'react-native';
 import About from './about'
 import Loading from './../../components/loading'
+import { fetchConducts } from './../../redux/actions/fetchactions'
 
-export default class AboutContainer extends Component {
+class AboutContainer extends Component {
   constructor() {
     super();
     this.state = {
-      dataSource: [],
       isLoading: true,
     };
   }
   componentDidMount() {
-    let endpoint = 'https://r10app-95fea.firebaseio.com/code_of_conduct.json';
-    fetch(endpoint)
-      // if fetch is successful, read our JSON out of the response
-      .then((response) => response.json())
-      .then((result) => {
-        this.setState({ dataSource: (result) });
-      })
-      .catch(error => console.log(`Error fetching JSON: ${error}`));
+    this.props.fetchingConducts();
   }
   componentDidUpdate() {
-    if (this.state.dataSource.length && this.state.isLoading) {
+    if (this.props.conductList.length && this.state.isLoading) {
       this.setState({ isLoading: false, });
     }
   }
-    static route = {
+  static route = {
     navigationBar: {
       title: 'About',
     }
   }
   render() {
-    
-
     return (
       this.state.isLoading ?
         <Loading />
         :
-        <About conducts={this.state.dataSource} />
-
+        <About conducts={this.props.conductList} />
     )
-
-
-
-
   }
 }
+const mapDispatchToProps = dispatch => ({
+  fetchingConducts: () => dispatch(fetchConducts()),
+});
 
+const mapStateToProps = (state) => {
+  return {
+    conductList: state.conducts,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AboutContainer);
