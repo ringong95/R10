@@ -31,7 +31,13 @@ export default class AboutContainer extends Component {
       this.setState({ isLoading: false, });
     }
   }
+    static route = {
+    navigationBar: {
+      title: 'About',
+    }
+  }
   render() {
+    
 
     return (
       this.state.isLoading ?
