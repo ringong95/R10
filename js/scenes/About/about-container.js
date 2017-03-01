@@ -14,16 +14,10 @@ class AboutContainer extends Component {
   constructor() {
     super();
     this.state = {
-      isLoading: true,
     };
   }
   componentDidMount() {
     this.props.fetchingConducts();
-  }
-  componentDidUpdate() {
-    if (this.props.conductList.length && this.state.isLoading) {
-      this.setState({ isLoading: false, });
-    }
   }
   static route = {
     navigationBar: {
@@ -32,10 +26,10 @@ class AboutContainer extends Component {
   }
   render() {
     return (
-      this.state.isLoading ?
-        <Loading />
-        :
+      this.props.loading ?
         <About conducts={this.props.conductList} />
+        :
+        <Loading />
     )
   }
 }
@@ -45,6 +39,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = (state) => {
   return {
+    loading: state.loading,
     conductList: state.conducts,
   };
 };
