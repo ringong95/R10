@@ -3,6 +3,8 @@ import AboutContainer from './about-container'
 import { ScrollView, Image } from 'react-native'
 import { Conduct } from './../../components/conduct'
 import styles from './styles'
+
+import Realm from './../../config/model'
 export default About = ({conducts}) => {
   return (
     <ScrollView >
