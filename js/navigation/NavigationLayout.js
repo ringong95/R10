@@ -4,7 +4,7 @@ import {
   TabNavigationItem as TabItem,
 } from '@exponent/ex-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-import React, { Component } from 'react'
+import React from 'react'
 import { View, Text } from 'react-native';
 import About from '../scenes/About'
 import { styles } from './styles.js'
@@ -27,8 +27,6 @@ export default class TabScreen extends React.Component {
       </Text>
     );
   }
-
-
   render() {
     const defaultRouteConfig = {
       
@@ -38,7 +36,7 @@ export default class TabScreen extends React.Component {
         tabBarColor="black"
         id="root"
         navigatorUID="root"
-        initialTab="about">
+        initialTab="schedule">
 
         <TabItem
           id="about"

@@ -6,7 +6,7 @@ import styles from './styles'
 export default About = ({conducts}) => {
   return (
     <ScrollView >
-    <Image style={styles.image} source={require('./../../../images/r10_logo.png')} />
+      <Image style={styles.image} source={require('./../../../images/r10_logo.png')} />
       {
         conducts.map((conduct) => {
           return <Conduct key={conduct.title} title={conduct.title} description={conduct.description} />

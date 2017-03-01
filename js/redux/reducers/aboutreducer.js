@@ -1,6 +1,6 @@
 import { LOADCONDUCT } from './../actions/fetchactions';
 
-const InitialState = {}
+const InitialState = []
 export default ConductReducer = (state = InitialState, action) => {
   switch (action.type) {
     case LOADCONDUCT:

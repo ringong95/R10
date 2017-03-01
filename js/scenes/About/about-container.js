@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, propTypes } from 'react';
 import { connect } from 'react-redux';
 import {
   StyleSheet,
@@ -13,8 +13,6 @@ import { fetchConducts } from './../../redux/actions/fetchactions'
 class AboutContainer extends Component {
   constructor() {
     super();
-    this.state = {
-    };
   }
   componentDidMount() {
     this.props.fetchingConducts();
@@ -43,5 +41,10 @@ const mapStateToProps = (state) => {
     conductList: state.conducts,
   };
 };
+AboutContainer.propTypes = {
+  fetchingConducts: React.PropTypes.func,
+  doneLoading: React.PropTypes.bool,
+  conductList: React.PropTypes.array,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AboutContainer);

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListView, Text, View } from 'react-native'
+import { ListView, Text, View, TouchableHighlight } from 'react-native'
 import Schedule from './schedule';
 import { formatSessionData, formatDataObject } from './../../lib/formatData'
 import { fetchSchedule } from './../../redux/actions/fetchactions'
 import Loading from './../../components/loading'
 import styles from './styles.js'
 import { convertTime } from './../../lib/formatData'
+import { goToSession } from './../../lib/navigationHelper'
 
 class ScheduleContainer extends Component {
   constructor() {
@@ -33,11 +34,14 @@ class ScheduleContainer extends Component {
           style={styles.listView}
           dataSource={this.props.dataSource}
           renderRow={(data) => (
-            <View style={styles.container}>
-              <Text style={styles.title}>{data.title}</Text>
-              <Text style={styles.description}> {data.description}  </Text>
-            </View>)
-          }
+            <TouchableHighlight onPress={() => goToSession(
+              'schedule', { data })}>
+              <View style={styles.container}>
+                <Text style={styles.title}>{data.title}</Text>
+                <Text style={styles.description}> {data.location}  </Text>
+              </View>
+            </TouchableHighlight>
+          )}
           renderSectionHeader={(sectionData, sectionText) => {
             return (
               <View style={styles.section}>
@@ -68,5 +72,10 @@ const mapStateToProps = (state) => {
     doneloading: state.loading
   };
 };
+// ScheduleContainer.prototype = {
+//   fetchingSchedule: React.PropTypes.func,
+//   doneloading: React.PropTypes.array,
+//   dataSource: React.PropTypes.array,
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScheduleContainer);

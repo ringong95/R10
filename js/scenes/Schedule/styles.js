@@ -2,21 +2,24 @@ import { StyleSheet } from 'react-native';
 import { colors, typography } from './../../config/styles';
 export default StyleSheet.create({
   container: {
-    // alignSelf: 'center',
-    margin: 5,
+    padding: 5,
     backgroundColor: 'white',
-    // alignItems: 'center',
+    
   },
   listView:{
-    // padding: 5,
-    // backgroundColor: colors.LightGrey,
+    backgroundColor: colors.LightGrey,
   },
   title: {
-    fontFamily: typography.fontMain,
-    fontSize: 20
+    fontFamily: typography.fontMainLight,
+    fontWeight: 'bold',
+    fontSize: 20,
+    padding: 5,
+    
   },
   description: {
     fontFamily: typography.fontMainLight,
+    color: colors.MediumGrey,
+    padding: 5,
     fontSize: 16
   },
   section: {
@@ -26,7 +29,7 @@ export default StyleSheet.create({
   separator: {
     flex: 1,
     height: 1,
-    backgroundColor: '#8E8E8E',
+    backgroundColor: colors.LightGrey,
   },
   sectionText: {
     fontSize: 16,
