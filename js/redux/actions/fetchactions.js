@@ -21,14 +21,16 @@ export const fetchConducts = () => (dispatch) => {
     });
 };
 export const fetchSchedule = () => (dispatch) => {
+  dispatch(toggleLoading(false))
   fetch('https://r10app-95fea.firebaseio.com/sessions.json', getRequest)
     .then(response => response.json())
     .then(json => {
       console.log(json)
       dispatch(loadSchedule(json))
+      dispatch(toggleLoading(true))
     });
 };
-function toggleLoading(stateOfLoad){
+function toggleLoading(stateOfLoad) {
   return {
     type: TOGGLELOAD,
     payload: stateOfLoad,

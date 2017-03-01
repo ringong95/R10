@@ -10,9 +10,6 @@ import styles from './styles.js'
 class ScheduleContainer extends Component {
   constructor() {
     super()
-    this.state = {
-      isLoading: true,
-    };
     this.ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
@@ -27,19 +24,12 @@ class ScheduleContainer extends Component {
     this.props.fetchingSchedule();
   }
   componentDidUpdate() {
-    // console.log(formatDataObject(this.props.schedule))
-    console.log(formatSessionData(this.props.schedule))
-    if (this.props.schedule.length && this.state.isLoading) {
-      this.setState({ isLoading: false, });
-    }
   }
   render() {
     return (
-      this.state.isLoading ?
-        <Loading />
-        :
+      this.props.loading ?
         <ListView
-          dataSource={this.ds.cloneWithRows(this.props.schedule)}
+          dataSource={this.props.dataSource}
           renderRow={(data) => (
             <View style={styles.container}>
               <Text style={styles.title}>{data.title}</Text>
@@ -49,11 +39,13 @@ class ScheduleContainer extends Component {
           renderSectionHeader={(sectionData, sectionID) => {
             return (
               <View style={styles.section}>
-                <Text style={styles.sectionText}>Title: {sectionID}</Text>
+                <Text style={styles.sectionText}>Title:{sectionID}</Text>
               </View>
             )
           }}
         />
+        :
+        <Loading />
     )
   }
 }
@@ -61,9 +53,16 @@ const mapDispatchToProps = dispatch => ({
   fetchingSchedule: () => dispatch(fetchSchedule()),
 });
 
+const ds = new ListView.DataSource({
+  rowHasChanged: (r1, r2) => r1 !== r2,
+  sectionHeaderHasChanged: (s1, s2) => s1 !== s2
+});
+
 const mapStateToProps = (state) => {
   return {
+    dataSource: ds.cloneWithRowsAndSections(state.schedule.dataBlob, state.schedule.sectionIds, state.schedule.rowIds),
     schedule: state.schedule,
+    loading: state.loading
   };
 };
 
