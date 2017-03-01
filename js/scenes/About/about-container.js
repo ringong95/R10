@@ -26,7 +26,7 @@ class AboutContainer extends Component {
   }
   render() {
     return (
-      this.props.loading ?
+      this.props.doneLoading ?
         <About conducts={this.props.conductList} />
         :
         <Loading />
@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = (state) => {
   return {
-    loading: state.loading,
+    doneLoading: state.loading,
     conductList: state.conducts,
   };
 };

@@ -1,3 +1,8 @@
+// converts time to human time
+export const convertTime = (unixTime) => (
+  new Date(unixTime * 1000).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+)
+
 // Helper to format format individual Firebase records
 export const formatDataObject = (data) => {
   const dataObject = Object.getOwnPropertyNames(data).map(index => data[index]);

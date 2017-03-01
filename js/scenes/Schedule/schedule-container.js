@@ -6,6 +6,7 @@ import { formatSessionData, formatDataObject } from './../../lib/formatData'
 import { fetchSchedule } from './../../redux/actions/fetchactions'
 import Loading from './../../components/loading'
 import styles from './styles.js'
+import { convertTime } from './../../lib/formatData'
 
 class ScheduleContainer extends Component {
   constructor() {
@@ -27,8 +28,9 @@ class ScheduleContainer extends Component {
   }
   render() {
     return (
-      this.props.loading ?
+      this.props.doneloading ?
         <ListView
+          style={styles.listView}
           dataSource={this.props.dataSource}
           renderRow={(data) => (
             <View style={styles.container}>
@@ -36,16 +38,14 @@ class ScheduleContainer extends Component {
               <Text style={styles.description}> {data.description}  </Text>
             </View>)
           }
-          renderSectionHeader={(sectionData, sectionID) => {
+          renderSectionHeader={(sectionData, sectionText) => {
             return (
               <View style={styles.section}>
-                <Text style={styles.sectionText}>Title:{
-                  
-                  `${new Date(sectionID*1000).toLocaleString('en-US', {hour: 'numeric',minute:'numeric', hour12: true })}`
-                }</Text>
+                <Text style={styles.sectionText}>{convertTime(sectionText)}</Text>
               </View>
             )
           }}
+          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
         />
         :
         <Loading />
@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
   return {
     dataSource: ds.cloneWithRowsAndSections(state.schedule.dataBlob, state.schedule.sectionIds, state.schedule.rowIds),
     schedule: state.schedule,
-    loading: state.loading
+    doneloading: state.loading
   };
 };
 
