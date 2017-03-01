@@ -39,7 +39,10 @@ class ScheduleContainer extends Component {
           renderSectionHeader={(sectionData, sectionID) => {
             return (
               <View style={styles.section}>
-                <Text style={styles.sectionText}>Title:{sectionID}</Text>
+                <Text style={styles.sectionText}>Title:{
+                  
+                  `${new Date(sectionID*1000).toLocaleString('en-US', {hour: 'numeric',minute:'numeric', hour12: true })}`
+                }</Text>
               </View>
             )
           }}
