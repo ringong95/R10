@@ -26,7 +26,7 @@ class Conduct extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this.onPress}>
-          <Text style={styles.header}> {title} </Text>
+          <Text style={styles.header}>{this.state.open ? '+' : '-' } {title} </Text>
           {
             this.state.open &&
               <Text style={styles.text}> {description} </Text>
