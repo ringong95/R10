@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { Component, propTypes } from 'react';
 import { View, Text } from 'react-native'
 import styles from './styles'
 
-export const Conduct = ({title, description}) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.header}> {title} </Text>
-      <Text style={styles.text}> {description} </Text>
-    </View>
-  )
+class Conduct extends Component {
+  constructor({title, description}) {
+    super()
+  }i
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.header}> {title} </Text>
+        <Text style={styles.text}> {description} </Text>
+      </View>
+    )
+  }
 }
+export { Conduct }
