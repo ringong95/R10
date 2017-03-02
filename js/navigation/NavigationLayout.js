@@ -58,6 +58,17 @@ export default class TabScreen extends React.Component {
             initialRoute={Router.getRoute('schedule')}
           />
         </TabItem>
+        <TabItem
+          id="faves"
+          title="faves"
+          renderIcon={(isSelected) => this.renderIcon('logo-playstation', isSelected)}
+          renderTitle={(isSelected) => this.renderTitle('Faves', isSelected)} >
+          <StackNavigation
+            id="faves"
+            navigatorUID="faves"
+            initialRoute={Router.getRoute('faves')}
+          />
+        </TabItem>
       </TabNavigation>
     );
   }

@@ -12,5 +12,12 @@ export default StyleSheet.create({
   },
   text: {
     fontFamily: typography.fontMainLight
+  },
+  symbol:{
+    height: 25,
+  },
+  titlecontainer:{
+    flex: 1,
+    flexDirection: 'row'
   }
 })

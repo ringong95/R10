@@ -5,6 +5,7 @@ import About from '../scenes/About'
 import Schedule from '../scenes/Schedule'
 import Session from '../scenes/Session'
 import Speaker from '../scenes/Speaker'
+import Faves from '../scenes/Faves'
 
 export default Router = createRouter(() => ({
   about: () => About,
@@ -12,6 +13,5 @@ export default Router = createRouter(() => ({
   tabscreen: () => Tabscreen,
   schedule: () => Schedule,
   session: () => Session,
-
-
+  faves: ()=> Faves,
 }));
