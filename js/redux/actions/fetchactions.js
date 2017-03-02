@@ -23,7 +23,7 @@ export const fetchConducts = () => (dispatch) => {
 };
 export const fetchSpeaker = (speakerId) => (dispatch) => {
   dispatch(toggleLoading(false))
-  const link = `https://r10app-95fea.firebaseio.com/speakers.json?orderBy=%22speaker_id%22&equalTo=%22${speakerId}%22`
+  const link = `https://r10app-95fea.firebaseio.com/speakers.json?orderBy="speaker_id"&equalTo="${speakerId}"`
   fetch(link, getRequest)
     .then(response => response.json())
     .then(json => {

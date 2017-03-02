@@ -4,6 +4,7 @@ import { convertTime } from './../../lib/formatData'
 import styles from './styles'
 import { goToSpeaker } from './../../lib/navigationHelper'
 const Session = ({data, speaker}) => {
+// this crashes when tyring to push onto root//
   return (
     <View style={styles.container}>
       <Text style={styles.location}>{data.location}</Text>
@@ -12,6 +13,7 @@ const Session = ({data, speaker}) => {
       <Text style={styles.description}>{data.description}</Text>
       <Text style={styles.presentedby}>Presented By:</Text>
       <TouchableOpacity style={styles.imageContainer} onPress={() => goToSpeaker(speaker)}>
+      
         <View style={styles.flexcity}>
           <Image style={styles.image} source={{ uri: speaker.image }} />
           <Text style={styles.name}>{speaker.name} </Text>
