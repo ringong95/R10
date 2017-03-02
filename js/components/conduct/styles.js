@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
-import { typography } from './../../config/styles'
+import { typography, colors } from './../../config/styles'
 
 export default StyleSheet.create({
   header: {
     fontSize: 30,
-    fontFamily: typography.fontMain
+    fontFamily: typography.fontMain,
+    color: colors.Purple,
   },
   container: {
     padding: 10,

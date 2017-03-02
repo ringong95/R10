@@ -14,10 +14,9 @@ class Conduct extends Component {
       duration: 500,
       update: {
         type: 'spring',
-        springDamping: 1, // lower == more dramatic spring 
+        springDamping: .00001, // lower == more dramatic spring 
       },
     };
-
     LayoutAnimation.configureNext(animationConfig);
     this.setState({ open: !this.state.open })
   }
