@@ -37,14 +37,12 @@ export default class TabScreen extends React.Component {
         id="root"
         navigatorUID="root"
         initialTab="schedule">
-
         <TabItem
           id="about"
           title="About"
           renderIcon={(isSelected) => this.renderIcon('logo-twitch', isSelected)}
           renderTitle={(isSelected) => this.renderTitle('About', isSelected)} >
           <StackNavigation
-
             id="about"
             navigatorUID="about"
             initialRoute={Router.getRoute('about')}
