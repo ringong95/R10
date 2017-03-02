@@ -13,6 +13,7 @@ export const FaveQuery = (realm) => {
 export const FaveDelete = (realm, favId) => {
   const Id = favId
   const Faves = realm.objects('Fave');
+  const deleteFave = Faves.filtered(`id == "${favId}"`)
   realm.write(() => {
     realm.delete(deleteFave);
   })
@@ -28,7 +29,7 @@ export const FaveUpdate = (realm, id) => {
   })
 }
 export const FaveToggle = (realm, id) => {
-  const FaveArray = realm.objects('Fave').map((fave) => fave.id);
+  const FaveArray = FaveQuery(realm)
   if (FaveArray.includes(id)) {
     FaveDelete(realm, id)
   }

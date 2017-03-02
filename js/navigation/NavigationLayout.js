@@ -31,6 +31,7 @@ export default class TabScreen extends React.Component {
     const defaultRouteConfig = {
       
     }
+    
     return (
       <TabNavigation
         tabBarColor="black"
