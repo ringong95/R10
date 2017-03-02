@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, TouchableHighlight } from 'react-native'
+import { Text, View, Image, TouchableHighlight, TouchableOpacity } from 'react-native'
 import { convertTime } from './../../lib/formatData'
 import styles from './styles'
 const Session = ({data, speaker}) => {
@@ -10,15 +10,15 @@ const Session = ({data, speaker}) => {
       <Text style={styles.time}>{convertTime(data.start_time)}</Text>
       <Text style={styles.description}>{data.description}</Text>
       <Text style={styles.presentedby}>Presented By:</Text>
-      <TouchableHighlight style={styles.imageContainer} onPress={() => console.log('ello')}>
-        <View style={styles.imageContainer}>
+      <TouchableOpacity style={styles.imageContainer} onPress={() => console.log('ello')}>
+        <View style={styles.flexcity}>
           <Image style={styles.image} source={{ uri: speaker.image }} />
           <Text style={styles.name}>{speaker.name} </Text>
         </View>
-      </TouchableHighlight>
-      <TouchableHighlight style={styles.button} onPress={() => console.log('ello')}>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => console.log('ello')}>
         <Text style={styles.buttonText}>FAVE ME</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     </View >
   );
 };

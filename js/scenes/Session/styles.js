@@ -23,19 +23,22 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   title: {
-    flex: .25,
     fontFamily: typography.fontMainLight,
     fontWeight: 'bold',
     fontSize: 25,
     marginTop: 8,
     marginBottom: 8,
   },
+  flexcity:{
+    flex:1,
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
   description: {
     flex: 1,
     fontFamily: typography.fontMainLight,
     fontSize: 18,
     lineHeight: 25,
-    // letterSpacing: 2,
     marginBottom: 40,
   },
   image: {
@@ -48,7 +51,6 @@ export default StyleSheet.create({
   imageContainer: {
     flex: .5,
     alignItems: 'center',
-
     flexDirection: 'row',
     paddingBottom: 5,
     marginBottom: 10,
