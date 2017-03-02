@@ -26,6 +26,7 @@ export default class R10 extends Component {
         <NavigationProvider context={navigationContext}>
           <StatusBar barStyle='light-content' />
           <StackNavigation
+            navigatorUID="root"
             id='root'
             initialRoute={Router.getRoute('tabscreen')} />
         </NavigationProvider>

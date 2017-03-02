@@ -34,8 +34,6 @@ export default class TabScreen extends React.Component {
     return (
       <TabNavigation
         tabBarColor="black"
-        id="root"
-        navigatorUID="root"
         initialTab="schedule">
         <TabItem
           id="about"
