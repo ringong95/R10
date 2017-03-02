@@ -1,16 +1,37 @@
 import React, { Component, propTypes } from 'react';
-import { View, Text } from 'react-native'
+import { View, Text, LayoutAnimation, TouchableOpacity } from 'react-native'
 import styles from './styles'
 
 class Conduct extends Component {
-  constructor({title, description}) {
+  constructor() {
     super()
-  }i
+    this.state = {
+      open: false
+    }
+  }
+  onPress = () => {
+    const animationConfig = {
+      duration: 500,
+      update: {
+        type: 'spring',
+        springDamping: 1, // lower == more dramatic spring 
+      },
+    };
+
+    LayoutAnimation.configureNext(animationConfig);
+    this.setState({ open: !this.state.open })
+  }
   render() {
+    const {title, description} = this.props
     return (
       <View style={styles.container}>
-        <Text style={styles.header}> {title} </Text>
-        <Text style={styles.text}> {description} </Text>
+        <TouchableOpacity onPress={this.onPress}>
+          <Text style={styles.header}> {title} </Text>
+          {
+            this.state.open &&
+              <Text style={styles.text}> {description} </Text>
+          }
+        </TouchableOpacity>
       </View>
     )
   }
