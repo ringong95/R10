@@ -3,10 +3,12 @@ import { NavigationReducer } from '@exponent/ex-navigation';
 import ConductReducer from './reducers/aboutreducer'
 import ScheduleReducer from './reducers/scheduleReducer'
 import LoadingReducer from './reducers/loadReducers'
+import SpeakerReducer from './reducers/speakerReducer'
 
 export default  combineReducers({
   navigation: NavigationReducer,
   conducts: ConductReducer,
   schedule: ScheduleReducer,
   loading: LoadingReducer,
+  speaker: SpeakerReducer,
 })

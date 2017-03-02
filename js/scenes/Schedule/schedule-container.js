@@ -8,12 +8,11 @@ import Loading from './../../components/loading'
 import styles from './styles.js'
 import { convertTime } from './../../lib/formatData'
 import { goToSession } from './../../lib/navigationHelper'
-import realm, { FaveQuery } from './../../config/model'
+// import realm, { FaveQuery } from './../../config/model'
 
 class ScheduleContainer extends Component {
   constructor() {
     super()
-    FaveQuery()
     this.ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2

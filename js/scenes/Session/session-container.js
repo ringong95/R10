@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native'
-import { convertTime } from './../../lib/formatData'
-
+import { Text, View, Image } from 'react-native'
+import { connect } from 'react-redux';
+import { fetchSpeaker } from './../../redux/actions/fetchactions'
+import Session from './session'
+import Loading from './../../components/loading'
 class SessionContainer extends Component {
   constructor() {
     super()
@@ -11,20 +13,31 @@ class SessionContainer extends Component {
       title: 'Session',
     }
   }
+  componentDidMount() {
+    this.props.fetchingSpeaker(this.props.sessionData.data.speaker);
+  }
   render() {
-    const {sessionData} = this.props
-    console.log(sessionData)
+    const {sessionData, speaker} = this.props
+    const {data} = sessionData
     return (
-      <View>
-        <Text>{sessionData.data.location}</Text>
-        <Text>{sessionData.data.title}</Text>
-        <Text>{convertTime(sessionData.data.start_time)}</Text>
-        <Text>{sessionData.data.description}</Text>
-      </View>
+      this.props.doneLoading?
+      <Session data={data} speaker={speaker}/>
+      :
+      <Loading/>
     )
   }
 }
 SessionContainer.propTypes = {
   sessionData: React.PropTypes.object,
 }
-export default SessionContainer;
+const mapDispatchToProps = dispatch => ({
+  fetchingSpeaker: (speakerId) => dispatch(fetchSpeaker(speakerId)),
+});
+
+const mapStateToProps = (state) => {
+  return {
+    doneLoading: state.loading,
+    speaker: state.speaker,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SessionContainer);

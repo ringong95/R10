@@ -7,10 +7,10 @@ const Fave = {
     faved_on: 'date'
   }
 };
-export const FaveQuery = () => {
-  return realm.objects('Fave')
+export const FaveQuery = (realm) => {
+  return realm.objects('Fave').map((fave) => fave.id);
 }
-export const FaveDelete = (favId) => {
+export const FaveDelete = (realm, favId) => {
   const Faves = realm.objects('Fave');
   const deleteFave = Faves.filtered('id == favId')
   realm.write(() => {
@@ -18,7 +18,7 @@ export const FaveDelete = (favId) => {
   })
 }
 
-export const FaveUpdate = (id) => {
+export const FaveUpdate = (realm, id) => {
   realm.write(() => {
     realm.create('Fave', {
       id,
