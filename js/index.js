@@ -6,6 +6,7 @@ import {
   ScrollView,
   StatusBar
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { NavigationContext, NavigationProvider, StackNavigation } from '@exponent/ex-navigation';
 import About from './scenes/About/'
 import Store from './redux/store'
@@ -24,7 +25,9 @@ export default class R10 extends Component {
     return (
       <Provider store={Store}>
         <NavigationProvider context={navigationContext}>
-          <StatusBar barStyle='light-content' />
+          <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+            <StatusBar barStyle='light-content' />
+          </LinearGradient>
           <StackNavigation
             navigatorUID="root"
             id='root'
@@ -34,4 +37,7 @@ export default class R10 extends Component {
     );
   }
 }
-
+var styles = StyleSheet.create({
+  linearGradient: {
+  },
+});

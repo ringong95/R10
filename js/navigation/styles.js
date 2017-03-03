@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tabTitleText: {
-    fontSize: 15,
+    fontSize: typography.baseSize,
     fontFamily: typography.fontMainLight
   }
 });

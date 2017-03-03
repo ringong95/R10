@@ -8,7 +8,6 @@ const FavSessionsReducer = (state = speakersInitialState, action) => {
     case LOADALLSPEAKER:
       const FaveIDs = FaveQuery(faves)
       const FavSessions = action.payload
-      console.log(FavSessions)
       const allMatching = FaveIDs.reduce((acc, id) => {
         const matching = FavSessions.filter((speaker) => {
           if (speaker.session_id == id) {

@@ -6,9 +6,7 @@ import styles from './styles'
 
 const Speaker = ({navigation}) => {
   const goBack = () => {
-    console.log("HELO ME")
     this.props.navigator.pop();
-    console.log("HELO ME")
   }
   return (
     <View>

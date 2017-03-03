@@ -22,9 +22,6 @@ class ScheduleContainer extends Component {
   componentDidMount() {
     this.props.fetchingSchedule();
   }
-  componentWillUnmount(){
-    console.log('unmount')
-  }
   render() {
     return (
       this.props.doneloading ?
