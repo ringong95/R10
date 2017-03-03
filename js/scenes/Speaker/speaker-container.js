@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Text, ScrollView, View, Image, TouchableHighlight, TouchableOpacity } from 'react-native'
+import { Text, ScrollView, View, Image, TouchableHighlight, TouchableOpacity, Linking } from 'react-native'
 import Speaker from './speaker'
 import styles from './styles'
 class SpeakerContainer extends Component {
@@ -12,7 +12,10 @@ class SpeakerContainer extends Component {
   goBack = () => {
     this.props.navigator.pop();
   }
-   static route = {
+  gotoWikipedia = (url) => {
+    Linking.openURL(url).catch(err => console.error('An error occurred', err));
+  }
+  static route = {
     navigationBar: {
       title: 'About the speaker',
     }
@@ -21,11 +24,15 @@ class SpeakerContainer extends Component {
     const {speaker} = this.props
     return (
       <ScrollView >
-      <View style={styles.container} >
-        <Image style={styles.image} source={{ uri: speaker.image }} />
-        <Text style={styles.name} >  {speaker.name} </Text>
-        <Text style={styles.bio} > {speaker.bio} </Text>
+        <View style={styles.container} >
+          <Image style={styles.image} source={{ uri: speaker.image }} />
+          <Text style={styles.name} >  {speaker.name} </Text>
+          <Text style={styles.bio} > {speaker.bio} </Text>
+          <TouchableOpacity style={styles.button} onPress={() => this.gotoWikipedia(speaker.url)}>
+        <Text style={styles.buttonText}>See more on Wikipedia</Text>
+      </TouchableOpacity>
         </View>
+
       </ScrollView>
     );
   }
