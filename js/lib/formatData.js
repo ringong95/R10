@@ -1,4 +1,13 @@
 // converts time to human time
+export const getFaves = (FaveIDs, FavSessions) => (FaveIDs.reduce((acc, id) => {
+  const matching = FavSessions.filter((speaker) => {
+    if (speaker.session_id == id) {
+      return speaker
+    }
+  })
+  return acc.concat(matching);
+}, []))
+
 export const convertTime = (unixTime) => (
   new Date(unixTime * 1000).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
 )

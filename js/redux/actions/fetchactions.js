@@ -2,7 +2,8 @@ export const LOADCONDUCT = 'LOADCONDUCT'
 export const LOADSCHEDULE = 'LOADSCHEDULE'
 export const TOGGLELOAD = 'TOGGLELOAD'
 export const LOADSPEAKER = 'LOADSPEAKER'
-export const LOADALLSPEAKER = 'LOADALLSPEAKER'
+export const LOADFORMATEDFAVS = 'LOADFORMATEDFAVS'
+export const LOADUNFORMATEDFAVS = 'UNLOADFORMATEDFAVS'
 const getRequest = {
   method: 'GET',
   headers: {
@@ -32,12 +33,19 @@ export const fetchSpeaker = (speakerId) => (dispatch) => {
       dispatch(toggleLoading(true))
     });
 };
-export const fetchFavSessions = () => (dispatch) => {
+export const fetchFavSessions = (data) => (dispatch) => {
   dispatch(toggleLoading(false))
   fetch('https://r10app-95fea.firebaseio.com/sessions.json', getRequest)
     .then(response => response.json())
     .then(json => {
-      dispatch(loadFavSessions(json))
+      if (data.formated){
+        console.log('what')
+        dispatch(loadFormatedFavSessions(json))
+      }
+      else{
+        console.log('whaafaifahoifhiht')
+        dispatch(loadunFormatedFavSessions(json))
+      }
       dispatch(toggleLoading(true))
     });
 }
@@ -62,12 +70,19 @@ function loadSpeaker(items) {
     payload: items
   }
 }
-function loadFavSessions(items) {
+function loadFormatedFavSessions(items) {
   return {
-    type: LOADALLSPEAKER,
+    type: LOADFORMATEDFAVS,
     payload: items
   }
 }
+function loadunFormatedFavSessions(items) {
+  return {
+    type: LOADUNFORMATEDFAVS,
+    payload: items
+  }
+}
+
 function loadSchedule(items) {
   return {
     type: LOADSCHEDULE,

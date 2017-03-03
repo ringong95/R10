@@ -7,7 +7,7 @@ import { fetchFavSessions } from './../../redux/actions/fetchactions'
 
 class FavesContainer extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchFavSessions())
+    this.props.dispatch(fetchFavSessions({formated: true}))
   }
   static route = {
     navigationBar: {
@@ -31,9 +31,10 @@ const ds = new ListView.DataSource({
 });
 
 const mapStateToProps = (state, ownProps) => {
-  return {  
-    doneloading: state.loading,
-        dataSource: ds.cloneWithRowsAndSections(state.Faves.dataBlob, state.Faves.sectionIds, state.Faves.rowIds),
+  const {loading, Faves} = state
+  return {
+    doneloading: loading,
+    dataSource: ds.cloneWithRowsAndSections(Faves.formated.dataBlob, Faves.formated.sectionIds, Faves.formated.rowIds),
 
   }
 }

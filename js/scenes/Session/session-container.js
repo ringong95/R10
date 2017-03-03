@@ -15,7 +15,6 @@ class SessionContainer extends Component {
   }
   componentDidMount() {
     this.props.dispatch(fetchSpeaker(this.props.sessionData.data.speaker))
-    this.props.dispatch(fetchFavSessions()
   }
   render() {
     const {sessionData, speaker, faves} = this.props

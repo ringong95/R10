@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListView } from 'react-native'
 import Schedule from './schedule';
-import { fetchSchedule } from './../../redux/actions/fetchactions'
+import { fetchSchedule, fetchFavSessions } from './../../redux/actions/fetchactions'
 import Loading from './../../components/loading'
 import styles from './styles.js'
 
@@ -20,20 +20,18 @@ class ScheduleContainer extends Component {
     }
   }
   componentDidMount() {
-    this.props.fetchingSchedule();
+    this.props.dispatch(fetchSchedule())
+    this.props.dispatch(fetchFavSessions({ formated: false }))
   }
   render() {
     return (
       this.props.doneloading ?
-        <Schedule dataSource={this.props.dataSource} currentNavigatorUID={'schedule'} />
+        <Schedule dataSource={this.props.dataSource} currentNavigatorUID={'schedule'} Faves={this.props.unformatedFavs} />
         :
         <Loading />
     )
   }
 }
-const mapDispatchToProps = dispatch => ({
-  fetchingSchedule: () => dispatch(fetchSchedule()),
-});
 
 const ds = new ListView.DataSource({
   rowHasChanged: (r1, r2) => r1 !== r2,
@@ -43,7 +41,8 @@ const ds = new ListView.DataSource({
 const mapStateToProps = (state) => {
   return {
     dataSource: ds.cloneWithRowsAndSections(state.schedule.dataBlob, state.schedule.sectionIds, state.schedule.rowIds),
-    doneloading: state.loading
+    doneloading: state.loading,
+    unformatedFavs: state.Faves.unformated.map((Fave) =>Fave.session_id)
   };
 };
 // ScheduleContainer.prototype = {
@@ -52,4 +51,4 @@ const mapStateToProps = (state) => {
 //   dataSource: React.PropTypes.array,
 // }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScheduleContainer);
+export default connect(mapStateToProps)(ScheduleContainer);

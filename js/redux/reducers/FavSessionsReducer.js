@@ -1,22 +1,21 @@
-import { LOADALLSPEAKER } from './../actions/fetchactions'
+import { LOADFORMATEDFAVS, LOADUNFORMATEDFAVS } from './../actions/fetchactions'
 import faves, { FaveQuery } from './../../config/model'
-import { formatDataObject, formatSessionData } from './../../lib/formatData'
+import { getFaves } from './../../lib/formatData'
+import { formatSessionData } from './../../lib/formatData'
 
-const speakersInitialState = { datablob: {}, sectionIds: {}, rowIds: {} }
+const speakersInitialState = { unformated: [], formated: { datablob: {}, sectionIds: {}, rowIds: {} } }
 const FavSessionsReducer = (state = speakersInitialState, action) => {
   switch (action.type) {
-    case LOADALLSPEAKER:
-      const FaveIDs = FaveQuery(faves)
-      const FavSessions = action.payload
-      const allMatching = FaveIDs.reduce((acc, id) => {
-        const matching = FavSessions.filter((speaker) => {
-          if (speaker.session_id == id) {
-            return speaker
-          }
-        })
-        return acc.concat(matching);
-      }, [])
-      return formatSessionData(allMatching)
+    case LOADFORMATEDFAVS:
+      let FaveIDs = FaveQuery(faves)
+      let FavSessions = action.payload
+      let allMatching = getFaves(FaveIDs, FavSessions)
+      return { ...state, formated: formatSessionData(allMatching) }
+    case LOADUNFORMATEDFAVS:
+      FaveIDs = FaveQuery(faves)
+      FavSessions = action.payload
+      allMatching = getFaves(FaveIDs, FavSessions)
+      return { ...state, unformated: allMatching }
     default:
       return state
   }

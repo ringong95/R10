@@ -5,7 +5,6 @@ import styles from './styles'
 import { goToSpeaker } from './../../lib/navigationHelper'
 import Fave, { FaveUpdate, FaveToggle } from './../../config/model'
 const Session = ({data, speaker, faves}) => {
-  console.log(faves)
   return (
     <View style={styles.container}>
       <Text style={styles.location}>{data.location}</Text>

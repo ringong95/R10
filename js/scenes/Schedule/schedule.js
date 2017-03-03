@@ -6,11 +6,16 @@ import {
   ListView,
   View
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { convertTime } from './../../lib/formatData'
 import styles from './styles.js'
 import { goToSession } from './../../lib/navigationHelper'
 
-export default Schedule = ({dataSource, currentNavigatorUID}) => {
+const filterMatch = (faves, data)=>{
+
+}
+export default Schedule = ({dataSource, currentNavigatorUID, Faves}) => {
+  console.log(Faves)
   return (
     <ListView
       style={styles.listView}
@@ -20,7 +25,14 @@ export default Schedule = ({dataSource, currentNavigatorUID}) => {
           currentNavigatorUID, { data }
         )}>
           <View style={styles.container}>
-            <Text style={styles.title}>{data.title}</Text>
+            <View>
+              <Text style={styles.title}>{data.title}</Text>
+              {
+                Faves.includes(data.session_id) &&
+                <Icon name="ios-heart" size={30} color="#900" />
+              }
+
+            </View>
             <Text style={styles.description}> {data.location}  </Text>
           </View>
         </TouchableHighlight>
