@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListView, Text, View, TouchableHighlight } from 'react-native'
-import Schedule from './../Schedule/schedule'
+import Faves from './faves'
 import Loading from './../../components/loading'
 import { fetchFavSessions } from './../../redux/actions/fetchactions'
 
@@ -18,7 +18,7 @@ class FavesContainer extends Component {
     const {dataSource} = this.props
     return (
       this.props.doneloading ?
-        <Schedule dataSource={dataSource} currentNavigatorUID={'faves'} />
+        <Faves dataSource={dataSource} currentNavigatorUID={'faves'} />
         :
         <Loading />
     );

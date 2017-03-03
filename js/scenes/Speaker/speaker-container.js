@@ -20,10 +20,12 @@ class SpeakerContainer extends Component {
   render() {
     const {speaker} = this.props
     return (
-      <ScrollView>
+      <ScrollView >
+      <View style={styles.container} >
         <Image style={styles.image} source={{ uri: speaker.image }} />
-        <Text> {speaker.name} </Text>
-        <Text> {speaker.bio} </Text>
+        <Text style={styles.name} >  {speaker.name} </Text>
+        <Text style={styles.bio} > {speaker.bio} </Text>
+        </View>
       </ScrollView>
     );
   }

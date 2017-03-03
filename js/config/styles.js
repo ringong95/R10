@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 export const colors = {
   MediumGrey: "#999999",
   LightGrey: "#e6e6e6",

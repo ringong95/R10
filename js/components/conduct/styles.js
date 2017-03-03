@@ -14,7 +14,7 @@ export default StyleSheet.create({
     fontFamily: typography.fontMainLight
   },
   symbol:{
-    height: 25,
+    // height: 25,
   },
   titlecontainer:{
     flex: 1,
