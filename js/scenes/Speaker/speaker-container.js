@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Text, View, Image, TouchableHighlight, TouchableOpacity } from 'react-native'
+import { Text, ScrollView, View, Image, TouchableHighlight, TouchableOpacity } from 'react-native'
 import Speaker from './speaker'
+import styles from './styles'
 class SpeakerContainer extends Component {
   constructor() {
     super()
@@ -11,22 +12,26 @@ class SpeakerContainer extends Component {
   goBack = () => {
     this.props.navigator.pop();
   }
+   static route = {
+    navigationBar: {
+      title: 'About the speaker',
+    }
+  }
   render() {
+    const {speaker} = this.props
     return (
-      <View>
-        <Text>
-          Hi
-        </Text>
-        <Icon.Button name="ios-play-outline" backgroundColor="#3b5998" onPress={this.goBack}>
-          Login with Facebook
-          </Icon.Button>
-      </View>
+      <ScrollView>
+        <Image style={styles.image} source={{ uri: speaker.image }} />
+        <Text> {speaker.name} </Text>
+        <Text> {speaker.bio} </Text>
+      </ScrollView>
     );
   }
 }
 const mapStateToProps = (state) => {
   return {
     navigation: state.navigation,
+    speaker: state.speaker,
   };
 };
 export default connect(mapStateToProps)(SpeakerContainer);

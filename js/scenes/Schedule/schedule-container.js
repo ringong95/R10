@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListView, Text, View, TouchableHighlight } from 'react-native'
+import { ListView } from 'react-native'
 import Schedule from './schedule';
-import { formatSessionData, formatDataObject } from './../../lib/formatData'
 import { fetchSchedule } from './../../redux/actions/fetchactions'
 import Loading from './../../components/loading'
 import styles from './styles.js'
-import { convertTime } from './../../lib/formatData'
-import { goToSession } from './../../lib/navigationHelper'
-// import realm, { FaveQuery } from './../../config/model'
 
 class ScheduleContainer extends Component {
   constructor() {
@@ -26,33 +22,10 @@ class ScheduleContainer extends Component {
   componentDidMount() {
     this.props.fetchingSchedule();
   }
-  componentDidUpdate() {
-  }
   render() {
     return (
       this.props.doneloading ?
-        <ListView
-          style={styles.listView}
-          dataSource={this.props.dataSource}
-          renderRow={(data) => (
-            <TouchableHighlight onPress={() => goToSession(
-              'schedule', { data }
-            )}>
-              <View style={styles.container}>
-                <Text style={styles.title}>{data.title}</Text>
-                <Text style={styles.description}> {data.location}  </Text>
-              </View>
-            </TouchableHighlight>
-          )}
-          renderSectionHeader={(sectionData, sectionText) => {
-            return (
-              <View style={styles.section}>
-                <Text style={styles.sectionText}>{convertTime(sectionText)}</Text>
-              </View>
-            )
-          }}
-          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-        />
+        <Schedule dataSource={this.props.dataSource} currentNavigatorUID={'schedule'} />
         :
         <Loading />
     )
@@ -70,7 +43,6 @@ const ds = new ListView.DataSource({
 const mapStateToProps = (state) => {
   return {
     dataSource: ds.cloneWithRowsAndSections(state.schedule.dataBlob, state.schedule.sectionIds, state.schedule.rowIds),
-    schedule: state.schedule,
     doneloading: state.loading
   };
 };

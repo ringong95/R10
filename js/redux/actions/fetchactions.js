@@ -2,6 +2,7 @@ export const LOADCONDUCT = 'LOADCONDUCT'
 export const LOADSCHEDULE = 'LOADSCHEDULE'
 export const TOGGLELOAD = 'TOGGLELOAD'
 export const LOADSPEAKER = 'LOADSPEAKER'
+export const LOADALLSPEAKER = 'LOADALLSPEAKER'
 const getRequest = {
   method: 'GET',
   headers: {
@@ -31,6 +32,15 @@ export const fetchSpeaker = (speakerId) => (dispatch) => {
       dispatch(toggleLoading(true))
     });
 };
+export const fetchFavSessions = () => (dispatch) => {
+  dispatch(toggleLoading(false))
+  fetch('https://r10app-95fea.firebaseio.com/sessions.json', getRequest)
+    .then(response => response.json())
+    .then(json => {
+      dispatch(loadFavSessions(json))
+      dispatch(toggleLoading(true))
+    });
+}
 export const fetchSchedule = () => (dispatch) => {
   dispatch(toggleLoading(false))
   fetch('https://r10app-95fea.firebaseio.com/sessions.json', getRequest)
@@ -49,6 +59,12 @@ function toggleLoading(stateOfLoad) {
 function loadSpeaker(items) {
   return {
     type: LOADSPEAKER,
+    payload: items
+  }
+}
+function loadFavSessions(items) {
+  return {
+    type: LOADALLSPEAKER,
     payload: items
   }
 }
