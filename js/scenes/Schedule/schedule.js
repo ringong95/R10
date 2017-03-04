@@ -11,18 +11,14 @@ import { convertTime } from './../../lib/formatData'
 import styles from './styles.js'
 import { goToSession } from './../../lib/navigationHelper'
 
-const filterMatch = (faves, data)=>{
-
-}
 export default Schedule = ({dataSource, currentNavigatorUID, Faves}) => {
-  console.log(Faves)
   return (
     <ListView
       style={styles.listView}
       dataSource={dataSource}
       renderRow={(data) => (
         <TouchableHighlight onPress={() => goToSession(
-          currentNavigatorUID, { data }
+          currentNavigatorUID, { data:{...data, Faves } }
         )}>
           <View style={styles.container}>
             <View>

@@ -6,6 +6,11 @@ export default StyleSheet.create({
     margin: 15,
     backgroundColor: 'white',
   },
+  heartcontainer:{
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
   location: {
     color: colors.MediumGrey,
     fontSize: 16,

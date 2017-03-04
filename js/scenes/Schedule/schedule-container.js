@@ -4,6 +4,7 @@ import { ListView } from 'react-native'
 import Schedule from './schedule';
 import { fetchSchedule, fetchFavSessions } from './../../redux/actions/fetchactions'
 import Loading from './../../components/loading'
+import realm from './../../config/model'
 import styles from './styles.js'
 
 class ScheduleContainer extends Component {
@@ -13,6 +14,9 @@ class ScheduleContainer extends Component {
       rowHasChanged: (r1, r2) => r1 !== r2,
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     });
+    realm.addListener('change', () => {
+      this.props.dispatch(fetchFavSessions({ formated: false }))
+    })
   }
   static route = {
     navigationBar: {

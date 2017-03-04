@@ -39,11 +39,9 @@ export const fetchFavSessions = (data) => (dispatch) => {
     .then(response => response.json())
     .then(json => {
       if (data.formated){
-        console.log('what')
         dispatch(loadFormatedFavSessions(json))
       }
       else{
-        console.log('whaafaifahoifhiht')
         dispatch(loadunFormatedFavSessions(json))
       }
       dispatch(toggleLoading(true))

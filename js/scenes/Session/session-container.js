@@ -4,26 +4,35 @@ import { connect } from 'react-redux';
 import { fetchSpeaker, fetchFavSessions } from './../../redux/actions/fetchactions'
 import Session from './session'
 import Loading from './../../components/loading'
+import realm from './../../config/model'
+import Realm from 'realm';
 class SessionContainer extends Component {
   constructor() {
     super()
+    realm.addListener('change', () => {
+      this.props.dispatch(fetchFavSessions({ formated: false }))
+    })
   }
+
   static route = {
     navigationBar: {
       title: 'Session',
     }
   }
+
   componentDidMount() {
     this.props.dispatch(fetchSpeaker(this.props.sessionData.data.speaker))
   }
+
   render() {
-    const {sessionData, speaker, faves} = this.props
+    
+    const {sessionData, speaker, Faves } = this.props
     const {data} = sessionData
     return (
-      this.props.doneLoading?
-      <Session data={data} speaker={speaker} faves={faves}/>
-      :
-      <Loading/>
+      this.props.doneLoading ?
+        <Session data={data} speaker={speaker} Faves={Faves} />
+        :
+        <Loading />
     )
   }
 }
@@ -35,7 +44,7 @@ const mapStateToProps = (state) => {
   return {
     doneLoading: state.loading,
     speaker: state.speaker,
-    faves: state.Faves.dataBlob,
+    Faves: state.Faves.formated.dataBlob,
 
   };
 };
