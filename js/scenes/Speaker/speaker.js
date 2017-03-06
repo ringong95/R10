@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles'
 
 
-const Speaker = ({navigation}) => {
+const Speaker = ({ navigation }) => {
   const goBack = () => {
     this.props.navigator.pop();
   }
@@ -15,7 +15,7 @@ const Speaker = ({navigation}) => {
     </Text>
       <Icon.Button name="ios-play-outline" backgroundColor="#3b5998" onPress={() => goBack()}>
         Login with Facebook
-  </Icon.Button>
+    </Icon.Button>
     </View>
   );
 };

@@ -7,7 +7,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
   },
   heartcontainer:{
-    flex: 1,
+    flex: .25,
     justifyContent: 'space-between',
     flexDirection: 'row',
   },
@@ -33,6 +33,7 @@ export default StyleSheet.create({
     fontSize: 25,
     marginTop: 8,
     marginBottom: 8,
+    // flex: .5,
   },
   flexcity:{
     flex:1,
@@ -80,6 +81,7 @@ export default StyleSheet.create({
     fontSize: 18,
   },
   presentedby:{
+    flex: .25,
     color: colors.MediumGrey,
     fontFamily: typography.fontMain,
   }

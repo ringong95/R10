@@ -11,6 +11,7 @@ class SessionContainer extends Component {
     super()
     realm.addListener('change', () => {
       this.props.dispatch(fetchFavSessions({ formated: false, load: false }))
+      this.props.dispatch(fetchFavSessions({ formated: true, load: false }))
     })
   }
 

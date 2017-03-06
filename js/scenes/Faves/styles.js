@@ -4,9 +4,9 @@ export default StyleSheet.create({
   container: {
     padding: 5,
     backgroundColor: 'white',
-    
+
   },
-  listView:{
+  listView: {
     backgroundColor: colors.LightGrey,
   },
   title: {
@@ -14,13 +14,17 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     padding: 5,
-    
+    flex: .5,
   },
   description: {
     fontFamily: typography.fontMainLight,
     color: colors.MediumGrey,
     padding: 5,
     fontSize: 16
+  },
+  titleView: {
+    flex: 1,
+    flexDirection: 'row',
   },
   section: {
     padding: 5,

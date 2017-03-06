@@ -8,11 +8,23 @@ import React from 'react'
 import { View, Text, Platform } from 'react-native';
 import About from '../scenes/About'
 import { styles } from './styles.js'
-import { colors } from '../config/styles'
+import { colors, typography } from '../config/styles'
+import LinearGradient from 'react-native-linear-gradient';
+
+
+const defaultRouteConfig = {
+  navigationBar: {
+    titleStyle: styles.titleStyle,
+    renderBackground: () => (
+      <LinearGradient
+        start={{ x: 0.0, y: 1.0 }} end={{ x: 1.0, y: 0.0 }}
+        colors={[colors.Red, colors.Purple]}
+        style={styles.linearGradient} />
+    ),
+  }
+}
 
 export default class TabScreen extends React.Component {
-
-
   renderIcon(iconName, isSelected) {
     let color = isSelected ? 'white' : colors.MediumGrey;
     return (
@@ -28,10 +40,6 @@ export default class TabScreen extends React.Component {
     );
   }
   render() {
-    const defaultRouteConfig = {
-      
-    }
-    
     return (
       <TabNavigation
         tabBarColor="black"
@@ -45,6 +53,7 @@ export default class TabScreen extends React.Component {
             id="about"
             navigatorUID="about"
             initialRoute={Router.getRoute('about')}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </TabItem>
         <TabItem
@@ -56,6 +65,7 @@ export default class TabScreen extends React.Component {
             id="schedule"
             navigatorUID="schedule"
             initialRoute={Router.getRoute('schedule')}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </TabItem>
         <TabItem
@@ -67,6 +77,7 @@ export default class TabScreen extends React.Component {
             id="faves"
             navigatorUID="faves"
             initialRoute={Router.getRoute('faves')}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </TabItem>
       </TabNavigation>

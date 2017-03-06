@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { typography } from './../config/styles'
+import { typography, colors} from './../config/styles'
 export const styles = StyleSheet.create({
   tabItemContainer: {
     flex: 1,
@@ -10,5 +10,14 @@ export const styles = StyleSheet.create({
   tabTitleText: {
     fontSize: typography.baseSize,
     fontFamily: typography.fontMainLight
-  }
+  },
+  linearGradient: {
+    flex: 1,
+  },
+  titleStyle: {
+    color: colors.White,
+    fontSize: 20,
+    fontFamily: typography.fontMain,
+    fontWeight: 'bold'
+  },
 });

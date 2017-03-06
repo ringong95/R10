@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text, View, Image, TouchableHighlight, TouchableOpacity, ListView} from 'react-native'
+import { Text, View, Image, TouchableHighlight, TouchableOpacity, ListView } from 'react-native'
 import { convertTime } from './../../lib/formatData'
 import styles from './styles'
 import { goToSpeaker } from './../../lib/navigationHelper'
 import Fave, { FaveUpdate, FaveToggle } from './../../config/model'
 import { goToSession } from './../../lib/navigationHelper'
-export default FaveScene = ({dataSource, currentNavigatorUID}) => {
+import Icon from 'react-native-vector-icons/Ionicons';
+export default FaveScene = ({ dataSource, currentNavigatorUID }) => {
   return (
     <ListView
       style={styles.listView}
@@ -15,8 +16,10 @@ export default FaveScene = ({dataSource, currentNavigatorUID}) => {
           currentNavigatorUID, { data }
         )}>
           <View style={styles.container}>
-            <Text style={styles.title}>{data.title}</Text>
-            <Text style={styles.description}> {data.location}  </Text>
+            <View style={styles.titleView}>
+              <Text style={styles.title}>{data.title}</Text>
+              <Icon name="ios-heart" size={30} color="#900" />
+            </View>
           </View>
         </TouchableHighlight>
       )}
