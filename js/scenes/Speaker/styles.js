@@ -26,6 +26,10 @@ export default StyleSheet.create({
     lineHeight: 30,
   },
   button: {
+    height: 50,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   linearGradient:{
     flex: 1,

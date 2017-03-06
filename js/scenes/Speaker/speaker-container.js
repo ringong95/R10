@@ -30,11 +30,12 @@ class SpeakerContainer extends Component {
           <Image style={styles.image} source={{ uri: speaker.image }} />
           <Text style={styles.name} >  {speaker.name} </Text>
           <Text style={styles.bio} > {speaker.bio} </Text>
-          <LinearGradient colors={[colors.Blue, colors.Purple]} style={styles.linearGradient} onPress={this.gotoWikipedia(speaker.url)}>
-            <Text style={styles.buttonText}>See more on Wikipedia</Text>
-          </LinearGradient>
+          <TouchableOpacity style={styles.button} onPress={() => this.gotoWikipedia(speaker.url)}>
+            <LinearGradient colors={[colors.Blue, colors.Purple]} style={styles.linearGradient} >
+              <Text style={styles.buttonText}>See more on Wikipedia</Text>
+            </LinearGradient>
+          </TouchableOpacity>
         </View>
-
       </ScrollView>
     );
   }
