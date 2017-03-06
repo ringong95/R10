@@ -21,13 +21,12 @@ export default Schedule = ({dataSource, currentNavigatorUID, Faves}) => {
           currentNavigatorUID, { data:{...data, Faves } }
         )}>
           <View style={styles.container}>
-            <View>
+            <View  style={styles.titleView}>
               <Text style={styles.title}>{data.title}</Text>
               {
                 Faves.includes(data.session_id) &&
                 <Icon name="ios-heart" size={30} color="#900" />
               }
-
             </View>
             <Text style={styles.description}> {data.location}  </Text>
           </View>

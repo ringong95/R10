@@ -7,7 +7,7 @@ import { fetchFavSessions } from './../../redux/actions/fetchactions'
 
 class FavesContainer extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchFavSessions({formated: true}))
+    this.props.dispatch(fetchFavSessions({formated: true, load: true}))
   }
   static route = {
     navigationBar: {

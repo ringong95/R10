@@ -15,7 +15,7 @@ class ScheduleContainer extends Component {
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2
     });
     realm.addListener('change', () => {
-      this.props.dispatch(fetchFavSessions({ formated: false }))
+      this.props.dispatch(fetchFavSessions({ formated: false, load: false }))
     })
   }
   static route = {
@@ -25,7 +25,7 @@ class ScheduleContainer extends Component {
   }
   componentDidMount() {
     this.props.dispatch(fetchSchedule())
-    this.props.dispatch(fetchFavSessions({ formated: false }))
+    this.props.dispatch(fetchFavSessions({ formated: false, load: true }))
   }
   render() {
     return (

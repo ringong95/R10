@@ -8,12 +8,19 @@ export default StyleSheet.create({
   },
   listView:{
     backgroundColor: colors.LightGrey,
+  },titleView:{
+    flex: 1,
+    // paddingLeft: 10,
+    // paddingRight: 10,
+    flexDirection: 'row',
+    // flexWrap: 'wrap',
   },
   title: {
     fontFamily: typography.fontMainLight,
     fontWeight: 'bold',
     fontSize: 20,
     padding: 5,
+    flex: .5,
     
   },
   description: {

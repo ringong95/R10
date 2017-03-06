@@ -3,7 +3,7 @@ export const LOADSCHEDULE = 'LOADSCHEDULE'
 export const TOGGLELOAD = 'TOGGLELOAD'
 export const LOADSPEAKER = 'LOADSPEAKER'
 export const LOADFORMATEDFAVS = 'LOADFORMATEDFAVS'
-export const LOADUNFORMATEDFAVS = 'UNLOADFORMATEDFAVS'
+export const LOADUNFORMATEDFAVS = 'LOADUNFORMATEDFAVS'
 const getRequest = {
   method: 'GET',
   headers: {
@@ -34,17 +34,22 @@ export const fetchSpeaker = (speakerId) => (dispatch) => {
     });
 };
 export const fetchFavSessions = (data) => (dispatch) => {
-  dispatch(toggleLoading(false))
+  if (data.load) {
+    dispatch(toggleLoading(false))
+  }
   fetch('https://r10app-95fea.firebaseio.com/sessions.json', getRequest)
     .then(response => response.json())
     .then(json => {
-      if (data.formated){
+      console.log(data)
+      if (data.formated) {
         dispatch(loadFormatedFavSessions(json))
       }
-      else{
+      else {
         dispatch(loadunFormatedFavSessions(json))
       }
-      dispatch(toggleLoading(true))
+      if (data.load) {
+        dispatch(toggleLoading(true))
+      }
     });
 }
 export const fetchSchedule = () => (dispatch) => {

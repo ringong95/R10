@@ -10,7 +10,7 @@ class SessionContainer extends Component {
   constructor() {
     super()
     realm.addListener('change', () => {
-      this.props.dispatch(fetchFavSessions({ formated: false }))
+      this.props.dispatch(fetchFavSessions({ formated: false, load: false }))
     })
   }
 
@@ -30,7 +30,7 @@ class SessionContainer extends Component {
     const {data} = sessionData
     return (
       this.props.doneLoading ?
-        <Session data={data} speaker={speaker} Faves={Faves} />
+        <Session data={data} speaker={speaker} faves={Faves} />
         :
         <Loading />
     )
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
   return {
     doneLoading: state.loading,
     speaker: state.speaker,
-    Faves: state.Faves.formated.dataBlob,
+    Faves: state.Faves.unformated,
 
   };
 };

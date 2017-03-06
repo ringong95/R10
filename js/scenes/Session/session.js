@@ -5,14 +5,16 @@ import { convertTime } from './../../lib/formatData'
 import styles from './styles'
 import { goToSpeaker } from './../../lib/navigationHelper'
 import Fave, { FaveUpdate, FaveToggle } from './../../config/model'
-const Session = ({data, speaker, faves}) => {
+const Session = ({ data, speaker, faves }) => {
+
+  const faveIds = faves.map((Fave) => Fave.session_id)
   return (
     <View style={styles.container}>
       <View style={styles.heartcontainer}>
         <Text style={styles.location}>{data.location}</Text>
         {
-          faves.includes(data.session_id) &&
-          <Icon name="ios-heart" size={30} color="#900" />
+          faveIds.includes(data.session_id) &&
+            <Icon name="ios-heart" size={30} color="#900" />
         }
       </View>
       <Text style={styles.title}>{data.title}</Text>
