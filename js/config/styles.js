@@ -6,6 +6,7 @@ export const colors = {
   Blue: '#8797D6',
   Purple: '#9963ea',
   Red: '#cf392a',
+  White: 'white',
 }
 export const typography = {
   baseSize: 16,
